@@ -1,4 +1,4 @@
-# Enterprise Architect를 사용한 요구사항 정의
+# Enterprise Architect를 이용한 UML 작성
 
 
 * 프로젝트 생성
@@ -31,30 +31,40 @@
 
     * Diagram 추가
         Model 우클릭 -> Add -> Add Diagram
+    
+    * Matrix 추가
+        Dialog 화면 우클릭 -> [[Swimlanes],[Matrix],[Kanban]] 중 Matrix 선택
 
-    * Security School UML 설계 패턴
+        - Title 지정 후 Save
+            Heading : UML 전체 흐름도
+            이하 아래 설계 패턴을 Column
+            요구사항 추적(Traceablility), 알게 된 것을 Row
+    
+    * 다이어그램 속성-> Hand Drawn 옵션 등 시각화 가능
 
-        1. 요구사항 수집 [Requirement]
-            인터뷰 내용으로 요구사항 정리
+* Security School UML 설계 패턴
 
-            - a 정적 분석 [UseCase]
-                요구사항을 데이터 관점에서 분석
+    1. 요구사항 수집 [Requirement]
+        인터뷰 내용으로 요구사항 정리
 
-            - b 동적 분석 [Activity]
-                요구사항을 시간순으로 분석
+        - 2-a 정적 분석 [UseCase]
+            요구사항을 데이터 관점에서 분석
 
-        2. 프로토타입 도출 [ - ]
-            새로운 기술 시험 및 제약사항 도출
+        - 2-b 동적 분석 [Activity]
+            요구사항을 시간순으로 분석
 
-            - a 정적 설계 [Class]
-                클래스 또는 소스 파일 설계
+    3. 프로토타입 도출 [ - ]
+        새로운 기술 시험 및 제약사항 도출
 
-            - b 동적 설계 [Sequence]
-                함수와 호출 순서 작성
+        - 4-a 정적 설계 [Class]
+            클래스 또는 소스 파일 설계
 
-        3. 모둘 설계 [Component]
-            컴포넌트 설계
+        - 4-b 동적 설계 [Sequence]
+            함수와 호출 순서 작성
 
-        4. 배치도 완성 [Deployment]
-            Node 배치
-        
+    5. 모둘 설계 [Component]
+        컴포넌트 설계
+
+    6. 배치도 [Deployment]
+        Node 배치
+    
