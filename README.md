@@ -8,3 +8,5 @@ Today I Learned
     [UML 요구사항](프로젝트/EA_Requirements.md)
     [UML 요구사항 분석 - 정적 분석](프로젝트/EA_Requirement_analysis.md)
 
+# 171011
+    [UML 요구사항 분석 - 동적 분석](프로젝트/EA_Requirement_analysis.md)
