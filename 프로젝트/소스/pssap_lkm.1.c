@@ -44,3 +44,14 @@ static void __exit pssapl_exit(void){
     printk(KERN_INFO "[%s] Goodbye LKM!\n", __FUNCTION__);
 }
 
+//filter function
+static int pssapl_filter_func(struct linux_binprm *bprm){
+    print(KERN_INFO "[pssapl] New process (file:%s)\n", bprm->filename);
+
+    if(NULL != bprm->filename && NUKK != strstr(bprm->filename, "pssap_eicar"))
+    {
+        printk(KERN_INFO "[pssapl] blocked\n");
+        return -EACCES;
+    }
+    return 0;
+}
