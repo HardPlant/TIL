@@ -48,3 +48,13 @@ EICAR 바이러스는 백신 기능을 테스트하기 위해 만든 가짜 바�
 ptototype/pssap_eicar라는 디렉터리를 만들고, 다음과 같이 간단한 C 소스를 만든다.
 
 > [](프로젝트\소스\pssap_eicar.c)
+
+Makefile은 다음과 같이 작성한다. 이 Makefile은 Security School 전반에서 사용하므로 꼭 작성해야 한다.
+
+> [](프로젝트\소스\eicar_Makefile)
+
+> PROGNAME = pssap_eicar
+
+    빌드된 object 파일을 pssap_eicar라는 이름으로 만든다. 실행 파일은 PROGNAME이므로, 다른 소스를 빌드하려고 사용할 떄 이 값을 변경한다.
+
+
