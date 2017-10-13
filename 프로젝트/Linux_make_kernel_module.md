@@ -40,3 +40,12 @@
 > sudo insmod pssap_lkm.ko
 > lsmod | grep -i pss
 > dmesg | grep -i pss
+
+    dmesg -C로 기존 커널 로그를 삭제한 후,insmod로 커널 모듈을 로드한다.
+    이후 lsmod로 로드된 커널 모듈을, dmesg로 커널 모듈의 로그를 확인한다.
+
+>sudo rmmod pssap_lkm
+>lsmod | grep -i pss
+>dmesg | grep -i pss
+
+    커널 모듈을 종료한 경우도 확인해본다.
