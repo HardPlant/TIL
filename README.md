@@ -12,3 +12,4 @@ Today I Learned
 # 101013
     [리눅스 커널 리빌드](프로젝트/Linux_Kerene_rebuild.md)
     [우분투 저장소 수정하기](프로젝트/Ubunto_Repo_setup.md)
+    [#printk의 기본 로그 레벨](프로젝트/Linux_kernel_log_level.md)
