@@ -10,11 +10,11 @@
 
     빌드하기 위해 빌드에 필요한 패키지, SSL 관련 패키지를 설치한다.
 
-    > sudo apt-get install build-essential libssl-dev
+> sudo apt-get install build-essential libssl-dev
 
     커널 소스를 다운로드한다.
 
->apt-get source linux-image-$(uname -r)
+> apt-get source linux-image-$(uname -r)
 
     받은 커널 소스가 잘 동작하는지 확인하기 위해 로그를 추가해보자.
     init/main.c의 rest_init() 함수를 찾아 수정해보자. (vi에서 검색은 커맨드 모드에서 /rest_init 식이다)
@@ -29,8 +29,8 @@
 
     현재 설치된 커널 설정대로 컴파일 설정 파일을 만들자.
 
->cd ~/workspace/kernel/linux-4.2.0
->cp /boot/config-$(uname -r) .config
+> cd ~/workspace/kernel/linux-4.2.0
+> cp /boot/config-$(uname -r) .config
 
     이제 이미지를 빌드한다.
     -j 옵션은 컴파일에 사용되는 스레드를 지정하는 옵션인데, 사용중인 CPU 코어보다 하나 더 많게 설정하는 것이 가장 효율이 높다고 한다. 여기서는 코어를 4개 할당했다고 가정한다.
