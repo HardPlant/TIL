@@ -3,7 +3,7 @@
 * 실행되는 프로세스 로그 남기기
 
 소스 분석을 통해 찾은 security_bprm_check 함수가 프로세스를 필터링하기 적당한 함수인지 테스트해보자.
-로그를 출력하기 위해 다음과 같이 수정한다.
+로그를 출력하기 위해 커널 소스(~kernel/security/security.c)다음과 같이 수정한다.
 
 > [security_bprm_check](프로젝트\소스\chunks\security_1.c)
 
