@@ -36,9 +36,16 @@ SYSCALL_DEFINE 매크로가 시스템 콜을 나타낸다 이를 일반화하면
 
 > SYSCALL_DEFINE 숫자 함수이름, 인자들
 
-긂 find 명령어와 grep으로 execve 함수가 시스템 콜로 구현된 모습을 찾아보자.
+그럼 find 명령어와 grep으로 execve 함수가 시스템 콜로 구현된 모습을 찾아보자.
 
 > find ./ -type f -name "*.c" | xargs grep -E 'SYSCALL_DEFINE.*execve *,';
 
+해당 fs/exec.c 파일에 구현되어 있다. 해당 소스를 분석해 security.c 소스에서 어떤 함수가 호출되는지 찾아보자.
 
-    
+커널 소스를 이해하고자 할 때 커널 소스 브라우저 사이트가 만들어져 있다.
+http://lxr.free-electrons.com/
+
+    fs/exec에서 execve가 실행됬다고 하는 주석 (v4.13.6에서는 :1794) 앞쪽에 exec_binprm,
+    exec_binprm()에서 ret 결과값인 search_binary_handler(bprm),
+    search_binary_handler의 security_bprm_check(); 부분이 security.c 파일의 함수이다.
+
