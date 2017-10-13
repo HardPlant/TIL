@@ -11,5 +11,4 @@ Today I Learned
 
 # 101013
     [리눅스 커널 리빌드](프로젝트/Linux_Kerene_rebuild.md)
-    [우분투 저장소 수정하기](프로젝트/Ubunto Repo setup.md)
-    
+    [우분투 저장소 수정하기](프로젝트/Ubunto_Repo_setup.md)

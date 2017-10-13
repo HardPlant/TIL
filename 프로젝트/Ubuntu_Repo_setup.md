@@ -14,3 +14,5 @@ apt 저장소 리스트를 수정하자.
 > %s/security.ubuntu.com/ftp.daum.net/g
 > %s/extras.ubuntu.com/ftp.daum.net/g
 
+* 주의:
+    책을 실습했을 때 설정을 변경했더니 
