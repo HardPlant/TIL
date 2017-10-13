@@ -15,4 +15,28 @@
 
     그리고 pssap_lkm.c 소스 파일을 다음과 같이 만든다.
 
-> 
+>[pssap_lkm.c](소스\pssap_lkm.c)
+
+    모듈은 실행 파일보다는 라이브러리의 집합이라고 생각하면 편하다.
+    module_init()으로 모듈을 초기화하고, module_exit()로 할당된 자원을 해제한다.
+    이 둘은 각각 커널이 모듈을 로드할 때, 종료될 때에 호출한다.
+
+* 커널 모듈 빌드를 위해 Makefile 작성
+
+>[Makefile](소스\Makefile)
+
+    소스 파일 이름으로 object 파일을 지정한다.
+
+ > obj-m += pssap_lkm.o
+
+    빌드하면 'pssap_lkm.ko'라는 이름의 커널 모듈이 생성된다.
+    Makefile이 있는 곳으로 가서 빌드하자.
+
+> make
+
+    빌드된 커널 모듈 pssal_lkm.ko를 로드한다.
+
+> sudo dmesg -C
+> sudo insmod pssap_lkm.ko
+> lsmod | grep -i pss
+> dmesg | grep -i pss

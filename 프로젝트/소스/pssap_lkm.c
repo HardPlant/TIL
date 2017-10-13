@@ -21,3 +21,13 @@ module_exit(pssapl_exit);
 
 
 
+//Module Init function
+static int __init pssapl_init(void){
+    printk(KERN_INFO "[%s] Hello LKM!\n", __FUNCTION__);
+    return 0;
+}
+
+//Module Exit function
+static void __exit pssapl_exit(void){
+    printk(KERN_INFO "[%s] Goodbye LKM!\n", __FUNCTION__);
+}
