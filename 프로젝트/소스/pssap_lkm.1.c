@@ -19,6 +19,14 @@ module_init(pssapl_init);
 //Set exit function to kernel
 module_exit(pssapl_exit);
 
+//Symbols from kernel
+typedef int (*security_bprm_check_func)(struct linux_binprm *bprm);
+extern void security_bprm_check_set_pss_filter(security_bprm_check_func pfunc);
+extern void security_bprm_check_unset_pss_filter(void);
+
+//filter function
+static int pssapl_filter_func(struct linux_binprm *bprm);
+
 
 //Module Init function
 static int __init pssapl_init(void){
