@@ -57,4 +57,6 @@ Makefile은 다음과 같이 작성한다. 이 Makefile은 Security School 전�
 
     빌드된 object 파일을 pssap_eicar라는 이름으로 만든다. 실행 파일은 PROGNAME이므로, 다른 소스를 빌드하려고 사용할 떄 이 값을 변경한다.
 
+빌드해 실행하면 자신의 존재를 알리는 로그만 출력한다. 앞으로 백신 기능을 테스할 때 이 파일을 사용한다.
+
 
