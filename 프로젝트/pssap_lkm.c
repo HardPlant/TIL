@@ -8,5 +8,16 @@ MODULE_DESCRIPTION("Airplance Prototype - LKM");
 MODULE_VERSION("0.1");
 
 //Module Init function
+static int __init pssapl_init(void);
+
+//Module Exit function
+static void __exit pssapl_exit(void);
+
+//Set init function to kernel
+module_init(pssapl_init);
+
+//Set exit function to kernel
+module_exit(pssapl_exit);
+
 
 
