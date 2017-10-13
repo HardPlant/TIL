@@ -63,4 +63,19 @@ Makefile은 다음과 같이 작성한다. 이 Makefile은 Security School 전�
 
 > [](프로젝트\소스\pssap_lkm.1.c)
 
+이제 커널 모듈을 빌드해 pssap_eicar를 차단하는지 확인해 보자.
 
+> lkm2/$ make
+> ../eicar/pssap_eicar
+stdout - (This is test virus for Airplane)
+
+> sudo insmod pssap_lkm.ko
+> ../eicar/pssap_eicar
+stdout - bash: .. : Permission denied
+
+> dmesg | grep -i pss
+... [pssapl] blocked
+
+> sudo rmmod pssap_lkm
+> ../eicar/pssap_eicar
+stdout - (This is test virus for Airplane)
