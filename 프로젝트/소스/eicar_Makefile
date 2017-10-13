@@ -1,0 +1,15 @@
+CC = gcc
+CFLAGS = -Wall -gcc
+
+PROGNAME = pssap_eicar
+SRCS = $(wildcard *.c)
+OBJS = $(patsubst %.c, %.0, $(SRCS))
+
+$(PROGNAME): $(OBJS)
+    $(CC) -o $A $& $(LDFLAGS)
+
+clean:
+    rm -f $(OBJS) $(PROGNAME) depend
+
+depend:
+    $(CC) $(CFLAGS) $.c > $@
