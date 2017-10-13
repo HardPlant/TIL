@@ -27,14 +27,20 @@ extern void security_bprm_check_unset_pss_filter(void);
 //filter function
 static int pssapl_filter_func(struct linux_binprm *bprm);
 
-
 //Module Init function
 static int __init pssapl_init(void){
     printk(KERN_INFO "[%s] Hello LKM!\n", __FUNCTION__);
+
+    //set filter
+    security_bprm_check_set_pss_filter(pssapl_filter_func);
+
     return 0;
 }
 
 //Module Exit function
 static void __exit pssapl_exit(void){
+    //unset filer before exit
+    security_bprm_check_unset_pss_filter();
     printk(KERN_INFO "[%s] Goodbye LKM!\n", __FUNCTION__);
 }
+
