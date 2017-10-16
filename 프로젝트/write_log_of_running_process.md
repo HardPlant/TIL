@@ -12,6 +12,7 @@ linux_binprm 구조체는 실행되려는 파일 경로를 filename 변수로 �
 수정이 끝났으면 커널 이미지인 bzImage만 재빌드하고 설치해 재부팅하자.
 
 >make -j5 bzImage
+>make install
 >reboot
 
 재부팅한 후 pss로 시작하는 부분을 찾아보자.
