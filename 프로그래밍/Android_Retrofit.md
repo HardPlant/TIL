@@ -121,3 +121,16 @@ public class Repo {
     }
 }
 >
+* POST
+    - 인터페이스 정의
+        
+>public interface apiService {
+>  @GET("comments")
+>  Call<ResponseBody>getPostComment(@Query("postid") int postid);
+>}
+식으로 쿼리 형식을 만들어 준 뒤
+>
+Call<ResponseBody>comment = apiService.getPostComment(2);
+comment.enqueue(new Callback<ResponseBody>()){}
+>
+식으로 하면 된다.
