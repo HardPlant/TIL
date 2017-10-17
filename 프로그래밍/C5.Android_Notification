@@ -1,0 +1,23 @@
+# Notification 만들기
+
+    NotificationManager mNotifyManager;
+    NotificationCompat.Builder mBuilder;
+
+            mNotifyManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mBuilder = new NotificationCompat.Builder(this);
+        mBuilder.setContentTitle("Picture Download")
+                .setContentText("Download in progress")
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setProgress(0,0,true)
+                .setOngoing(true); // 사라지지 않게 한다
+
+이렇게 초기화 시켜준 뒤
+    
+> mNotifyManager.notify(0, mBuilder.build());
+
+를 호출하면 실행되고
+
+> mNotifyManager.cancel(0);
+
+를 실행하면 알림이 사라진다.
