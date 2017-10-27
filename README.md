@@ -19,3 +19,6 @@ Today I Learned
     [간단한 필터링](프로젝트\Simple_Filtering.md)
 
 # 171016
+    [컨트랙트와 트랜잭션](프로그래밍\블록체인\0.Build a smart contract.md)
+    [스마트 컨트랙트 만들기](프로그래밍\블록체인\00.Contracts and Transactions.md)
+    
