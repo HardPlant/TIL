@@ -1,6 +1,7 @@
 #include <linux/init.h> // For init, exit macro
 #include <linux/module.h> // Core header for LKM(Linux Kernel Module)
 #include <linux/kernel.h> // Core header for Kernel
+#include <linux/binfmts.h>
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("SecuritySchool");
@@ -48,7 +49,7 @@ static void __exit pssapl_exit(void){
 static int pssapl_filter_func(struct linux_binprm *bprm){
     print(KERN_INFO "[pssapl] New process (file:%s)\n", bprm->filename);
 
-    if(NULL != bprm->filename && NUKK != strstr(bprm->filename, "pssap_eicar"))
+    if(NULL != bprm->filename && NULL != strstr(bprm->filename, "pssap_eicar"))
     {
         printk(KERN_INFO "[pssapl] blocked\n");
         return -EACCES;

@@ -1,4 +1,4 @@
-( 생략 )
+//( 생략 )
 /* 수정 시작 */
 
 // Lock for filter function

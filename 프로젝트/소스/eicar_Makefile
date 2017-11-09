@@ -3,10 +3,10 @@ CFLAGS = -Wall -gcc
 
 PROGNAME = pssap_eicar
 SRCS = $(wildcard *.c)
-OBJS = $(patsubst %.c, %.0, $(SRCS))
+OBJS = $(patsubst %.c, %.o, $(SRCS))
 
 $(PROGNAME): $(OBJS)
-    $(CC) -o $A $& $(LDFLAGS)
+    $(CC) -o $@ $^ $(LDFLAGS)
 
 clean:
     rm -f $(OBJS) $(PROGNAME) depend
