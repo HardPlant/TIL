@@ -4,12 +4,10 @@
 #include <netdb.h>
 #include <string.h>
 #include <pthread.h>
-#include "keyserver.c"
-/*
-#include "client.c"
-#include "server.c"
+#include "keyserver.h"
+#include "client.h"
+#include "server.h"
 
-*/
 void startKeyServer();
 void startChat();
 void* keyserver_start(void* data);
@@ -83,29 +81,6 @@ void* keyserver_start(void* data){
         handler_args[1] = (void*) dest_addr;
         pthread_create(handler, NULL, keyserver_handler, handler_args);
     }   
-}
-
-void* keyserver_handler(void* data){
-    int conn_fd = *( (int*)data[0] );
-    char* client_addr = (char*)data[1];
-
-    int server_key = 10;
-    KEY_SERVER* server = keyserver_init(server_key);
-    char recv[1000];
-    char send[1000];
-
-    bzero(recv, sizeof(recv));
-    read(conn_fd, recv, sizeof(recv));
-    int from = atoi(recv);
-
-    bzero(recv, sizeof(recv));
-    read(conn_fd, recv, sizeof(recv));
-    int to = atoi(recv);
-
-    bzero(send, sizeof(send));
-    int result = keyserver_try_login(server, from, to);
-    sprintf(send, "%d", result);
-    write(conn_fd, send, sizeof(send));
 }
 
 void* client_start(void* data){

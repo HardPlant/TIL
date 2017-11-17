@@ -1,26 +1,27 @@
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <string.h>
-#include <pthread.h>
-#define MAX_PEER 2
+#include "keyserver.h"
 
-typedef int PUBLIC_KEY_TYPE;
+void* keyserver_handler(void* data){
+    int conn_fd = *( (int*)data[0] );
+    char* client_addr = (char*)data[1];
 
-typedef struct {
-    PUBLIC_KEY_TYPE pub;
-    PUBLIC_KEY_TYPE pri;
-} KEY_PAIR;
+    int server_key = 10;
+    KEY_SERVER* server = keyserver_init(server_key);
+    char recv[1000];
+    char send[1000];
 
-typedef struct{
-    int passwords[MAX_PEER];
-    int publics[MAX_PEER];
-    KEY_PAIR* key_pair[MAX_PEER];
+    bzero(recv, sizeof(recv));
+    read(conn_fd, recv, sizeof(recv));
+    int from = atoi(recv);
 
-    int public_key;
-} KEY_SERVER;
+    bzero(recv, sizeof(recv));
+    read(conn_fd, recv, sizeof(recv));
+    int to = atoi(recv);
 
+    bzero(send, sizeof(send));
+    int result = keyserver_try_login(server, from, to);
+    sprintf(send, "%d", result);
+    write(conn_fd, send, sizeof(send));
+}
 
 
 int id_compare(const void *a, const void *b){
