@@ -9,7 +9,7 @@ TEST(KeyServerTest, Init) {
 
 TEST(KeyServerTest, GetStoredId) { 
     KEY_SERVER* server = keyserver_init();
-    server->id_pair[0]=2;
+    keyserver_set_id(server,0,2);
 
     ASSERT_EQ(2, keyserver_get_id(server, 0));
     free(server);

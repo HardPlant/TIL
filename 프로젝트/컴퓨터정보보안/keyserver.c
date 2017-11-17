@@ -12,7 +12,7 @@ KEY_SERVER* keyserver_init(){
     return (KEY_SERVER*) malloc(sizeof(KEY_SERVER));
 }
 
-int keyserver_KEY_set_id(KEY_SERVER* server, int id, int pw){
+int keyserver_set_id(KEY_SERVER* server, int id, int pw){
     server->id_pair[id] = pw;
     return 1;
 }
