@@ -1,5 +1,10 @@
 #define MSG_LENGTH 1000
 #include <stdio.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <string.h>
+#include <pthread.h>
 
 int client_init(){
     return 1;
@@ -24,5 +29,8 @@ int client_recv_pub_key(){
 }
 
 int client_send_chat_init(){
-    
+
+}
+int client_recv_chat_init_ack(){
+
 }
