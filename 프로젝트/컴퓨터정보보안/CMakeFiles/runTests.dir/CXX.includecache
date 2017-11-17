@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/c_hash.c
+
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/client.c
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/keyserver.c
@@ -13,6 +15,12 @@ stdlib.h
 -
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/server.c
+
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_c_hash.cpp
+gtest/gtest.h
+-
+c_hash.c
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/c_hash.c
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_client.cpp
 gtest/gtest.h
@@ -39,6 +47,8 @@ test_keyserver.cpp
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_keyserver.cpp
 test_server.cpp
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_server.cpp
+test_c_hash.cpp
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_c_hash.cpp
 gtest/gtest.h
 -
 
