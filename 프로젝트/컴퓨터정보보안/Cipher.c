@@ -14,7 +14,9 @@ char* DES(char* block, char* key){
 }
 
 char* RSA(int plain, RSA_KEY key){
-int e,d;
-int N = (e-1)*(d-1);
-int cipher = pow (,) % N;
+    RSA_TYPE p, q, N, pi;
+
+    rsa_get_coprime(p,q);
+
+    
 }
