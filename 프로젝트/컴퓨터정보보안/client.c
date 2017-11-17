@@ -15,4 +15,14 @@ char* client_send_msg(int fd){
     return sendline;
 }
 
+int client_connect_key_server(){
+    return 0;
+}
 
+int client_recv_pub_key(){
+    return 0;
+}
+
+int client_send_chat_init(){
+    
+}

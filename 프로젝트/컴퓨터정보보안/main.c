@@ -59,6 +59,8 @@ void* keyserver_start(void* data){
     int port = *( (int*)data );
     int listen_fd, connection_fd;
     struct sockaddr_in serve_addr;
+
+    void* handler_args[2];
     pthread_t handler;
     printf("Keyserver\n");
     
@@ -74,13 +76,19 @@ void* keyserver_start(void* data){
     listen(listen_fd, 10);
     
     while(1){
-        connetion_fd = accept(listen_fd, (struct sockaddr*)NULL, NULL);
-        pthread_create(handler, NULL, keyserver_handler, &connetion_fd);
+        struct sockaddr* dest_addr;
+        bzero(dest_addr);
+        connetion_fd = accept(listen_fd, (struct sockaddr*)dest_addr, NULL);
+        handler_args[0] = (void*) &connetion_fd;
+        handler_args[1] = (void*) dest_addr;
+        pthread_create(handler, NULL, keyserver_handler, handler_args);
     }   
 }
 
 void* keyserver_handler(void* data){
-    int conn_fd = *( (int*)data );
+    int conn_fd = *( (int*)data[0] );
+    char* client_addr = (char*)data[1];
+
     int server_key = 10;
     KEY_SERVER* server = keyserver_init(server_key);
     char recv[1000];
@@ -147,6 +155,3 @@ void* server_handler(void* data){
     int conn_fd = *( (int*)data );
 }
 
-void key_server_connect_task(void* data){
-    
-}
