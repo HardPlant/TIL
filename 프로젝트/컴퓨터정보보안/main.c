@@ -7,9 +7,9 @@
 */
 void startKeyServer();
 void startChat();
-void keyserver_init(){ printf("Keyserver\n");}
-void client_init(){ printf("Client\n");}
-void server_init(){ printf("Server\n");}
+void* keyserver_init(void* data){ printf("Keyserver\n");}
+void* client_init(void* data){ printf("Client\n");}
+void* server_init(void* data){ printf("Server\n");}
 
 int main(int argc, char* argv[]){
     char input = '0';
@@ -25,15 +25,16 @@ int main(int argc, char* argv[]){
 
 void startKeyServer(){
     pthread_t key_server;
-    pthread_create(&key_server, NULL keyserver_init, NULL);
-
+    pthread_create(&key_server, NULL, keyserver_init, NULL);
+    pthread_join(key_server, NULL);
 }
 void startChat(){
     pthread_t client;
     pthread_t server;
     pthread_create(&client, NULL, client_init, NULL);
     pthread_create(&server, NULL, server_init, NULL);
-    
+    pthread_join(client, NULL);
+    pthread_join(server, NULL);
 }
 
 
