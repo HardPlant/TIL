@@ -21,9 +21,8 @@ int keyserver_get_id(KEY_SERVER* server, int index){
 
     return server->id_pair[index];
 }
-/*
-int keyserver_try_login(int id){
-    if(id == key_server_get_id(id)) return 1;
+
+int keyserver_try_login(KEY_SERVER* server, int id){
+    if(id == key_server_get_id(server,id)) return 1;
     return 0;
 }
-/**/
