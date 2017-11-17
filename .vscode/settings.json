@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "utility": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "xutility": "c"
     }
 }
