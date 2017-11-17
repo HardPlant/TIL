@@ -1,23 +1,27 @@
 #include <stdlib.h>
 
-static int g_id_pair[2];
+typedef struct{
+    int id_pair[2];
+} SERVER;
 
 int id_compare(const void *a, const void *b){
     return ( *(int*)a - *(int*)b );
 }
 
-int keyserver_init(){
-    g_id_pair[0] = 2; // A: id : 1, pw : 2
+SERVER* keyserver_init(){
+    return (SERVER*) malloc(sizeof(SERVER));
+}
 
-    g_id_pair[1] = 4; // B : id : 3, pw : 4
-
+int keyserver_set_id(int id, int pw){
+//    g_id_pair[id] = pw;
     return 1;
 }
 
 int keyserver_get_id(int index){
-    return g_id_pair[index];
+  //  return g_id_pair[index];
 }
 
 int keyserver_try_login(int id){
-    return 1;
+    if(id == keyserver_get_id(id)) return 1;
+    return 0;
 }
