@@ -35,3 +35,11 @@ TEST(KeyServerTest, TryLoginWithGoodId) {
     
     free(server);
 }
+
+TEST(KeyServerTest, GetPublicKey){
+    KEY_SERVER* server = keyserver_init(0);
+
+    
+    
+    free(server);
+}

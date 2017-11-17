@@ -33,3 +33,15 @@ int keyserver_try_login(KEY_SERVER* server, int id, int pw){
     
     return 1;    
 }
+int keyserver_is_logged_in(KEY_SERVER* server, int id){
+    return 1;
+}
+int keyserver_set_public_key(KEY_SERVER* server, int id, int key){
+    server->publics[id] = key;
+    return 1;
+}
+
+int keyserver_get_public_key(KEY_SERVER* server, int id){
+    if(!keyserver_is_logged_in(server, id)) return -1;
+    return server->publics[id];
+}
