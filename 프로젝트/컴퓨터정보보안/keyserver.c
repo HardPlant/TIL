@@ -9,7 +9,7 @@ int id_compare(const void *a, const void *b){
 }
 
 SERVER* keyserver_init(){
-    return NULL;
+    return (SERVER*) malloc(sizeof(SERVER));
 }
 
 int keyserver_set_id(int id, int pw){
