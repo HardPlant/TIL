@@ -6,5 +6,5 @@ TEST(KeyServerTest, Init) {
 }
 
 TEST(KeyServerTest, GetStoredId) { 
-    ASSERT_EQ(0, keyserver_get_id(0));
+    ASSERT_EQ(2, keyserver_get_id(0));
 }
