@@ -38,8 +38,14 @@ TEST(KeyServerTest, TryLoginWithGoodId) {
 
 TEST(KeyServerTest, GetPublicKey){
     KEY_SERVER* server = keyserver_init(0);
+    keyserver_set_id(server, 0,2);
+    keyserver_set_id(server, 1,4);
+    keyserver_set_public_key(server, 0,3);
+    keyserver_set_public_key(server, 1,5);
+    
+    ASSERT_EQ(1, keyserver_try_login(server,0,2));
 
-    
-    
+    ASSERT_EQ(5, keyserver_get_public_key(server,1));
+
     free(server);
 }
