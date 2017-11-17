@@ -2,6 +2,10 @@
 
 static int id[100];
 
+int id_compare(const void *a, const void *b){
+    return ( *(int*)a - *(int*)b );
+}
+
 
 int keyserver_init(){
     return 1;
