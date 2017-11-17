@@ -13,7 +13,7 @@ TEST(KeyServerTest, GetStoredId) {
     KEY_SERVER* server = keyserver_init(0);
     keyserver_set_id(server,0,2);
 
-    ASSERT_EQ(2, keyserver_get_id(server, 0));
+    ASSERT_EQ(2, keyserver_get_pw(server, 0));
     free(server);
 }
 
@@ -22,7 +22,7 @@ TEST(KeyServerTest, TryLoginWithBadId) {
 
     keyserver_set_id(server, 0,2);
     keyserver_set_id(server, 1,4);
-    ASSERT_EQ(1, keyserver_try_login(server,0));
+    ASSERT_EQ(0, keyserver_try_login(server,0,1));
     
     free(server);
 }
@@ -31,7 +31,7 @@ TEST(KeyServerTest, TryLoginWithGoodId) {
 
     keyserver_set_id(server, 0,2);
     keyserver_set_id(server, 1,4);
-    ASSERT_EQ(2, keyserver_try_login(server,0));
+    ASSERT_EQ(1, keyserver_try_login(server,0,2));
     
     free(server);
 }
