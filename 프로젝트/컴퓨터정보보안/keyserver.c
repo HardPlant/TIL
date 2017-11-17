@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #define MAX_PEER 2
 typedef struct{
+    char relations[MAX_PEER][2][256];
     int passwords[MAX_PEER];
+    int publics[MAX_PEER];
     int id_state[MAX_PEER];
     int public_key;
 } KEY_SERVER;
@@ -27,6 +29,7 @@ int keyserver_get_pw(KEY_SERVER* server, int id){
 }
 
 int keyserver_try_login(KEY_SERVER* server, int id, int pw){
-    if(pw == keyserver_get_pw(server,id)) return 1;
-    return 0;
+    if(pw != keyserver_get_pw(server,id)) return 0;
+    
+    return 1;    
 }

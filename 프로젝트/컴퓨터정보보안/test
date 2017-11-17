@@ -1,0 +1,2 @@
+#!/bin/bash
+cmake CMakeLists.txt;make;./runTests
