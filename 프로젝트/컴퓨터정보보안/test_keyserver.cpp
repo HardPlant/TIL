@@ -2,7 +2,8 @@
 #include "keyserver.c"
 
 TEST(KeyServerTest, Init) { 
-    ASSERT_EQ(1, keyserver_init());
+    SERVER* server = keyserver_init();
+    ASSERT_TRUE(server);
 }
 
 TEST(KeyServerTest, GetStoredId) { 
