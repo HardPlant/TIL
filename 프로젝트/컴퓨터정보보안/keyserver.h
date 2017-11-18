@@ -25,7 +25,20 @@ typedef struct{
     int public_key;
 } KEY_SERVER;
 
+#include "keyserver.h"
 
+void* keyserver_handler(void* data);
+
+int id_compare(const void *a, const void *b);
+
+KEY_SERVER* keyserver_init(int public_key);
+
+int keyserver_set_id(KEY_SERVER* server, int id, int pw);
+int keyserver_get_pw(KEY_SERVER* server, int id);
+int keyserver_try_login(KEY_SERVER* server, int id, int pw);
+
+int keyserver_set_public_key(KEY_SERVER* server, int id, int key);
+int keyserver_get_public_key(KEY_SERVER* server, int id);
 
 
 

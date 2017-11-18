@@ -8,13 +8,41 @@
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/c_hash.c
 
-/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/client.c
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/client.h
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/keyserver.c
-stdlib.h
+keyserver.h
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/keyserver.h
+
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/keyserver.h
+stdio.h
 -
+sys/types.h
+-
+sys/socket.h
+-
+netdb.h
+-
+string.h
+-
+pthread.h
+-
+keyserver.h
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/keyserver.h
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/server.c
+stdio.h
+-
+sys/types.h
+-
+sys/socket.h
+-
+netdb.h
+-
+string.h
+-
+pthread.h
+-
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_c_hash.cpp
 gtest/gtest.h
@@ -25,8 +53,8 @@ c_hash.c
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_client.cpp
 gtest/gtest.h
 -
-client.c
-/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/client.c
+client.h
+/mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/client.h
 
 /mnt/e/repo/TIL/프로젝트/컴퓨터정보보안/test_keyserver.cpp
 gtest/gtest.h

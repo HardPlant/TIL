@@ -1,8 +1,8 @@
 #include "keyserver.h"
 
 void* keyserver_handler(void* data){
-    int conn_fd = *( (int*)data[0] );
-    char* client_addr = (char*)data[1];
+    int conn_fd = *((int*)data);
+    char* client_addr = ((char*)data[1]);
 
     int server_key = 10;
     KEY_SERVER* server = keyserver_init(server_key);

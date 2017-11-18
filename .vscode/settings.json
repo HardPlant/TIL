@@ -2,6 +2,7 @@
     "files.associations": {
         "utility": "c",
         "type_traits": "c",
-        "xutility": "c"
+        "xutility": "c",
+        "array": "c"
     }
 }

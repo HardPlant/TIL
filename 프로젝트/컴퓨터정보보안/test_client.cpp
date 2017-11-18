@@ -1,9 +1,5 @@
 #include <gtest/gtest.h>
-#include "client.c"
-
-TEST(ClientTest, Init) { 
-    ASSERT_EQ(1, client_init());
-}
+#include "client.h"
 
 TEST(ClientTest, Init) { 
     ASSERT_EQ(1, client_init());

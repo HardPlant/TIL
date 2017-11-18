@@ -5,6 +5,7 @@
 #include <netdb.h>
 #include <string.h>
 #include <pthread.h>
+#include "client.h"
 
 int client_init(){
     return 1;
