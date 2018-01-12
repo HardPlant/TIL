@@ -54,3 +54,17 @@ fhttps://www.slideshare.net/sungbeenjang/firebase-for-web-1-hosting
   });
 ```
 4. 데이터베이스에 데이터 쓰기
+```js
+firebase.database().ref('/메시지').set('안녕하세요!');
+```
+
+```js
+//reference code
+function writeUserData(userId, name, email, imageUrl){
+    firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture: imageUrl
+    });
+}
+```
