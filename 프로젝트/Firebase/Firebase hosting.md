@@ -86,3 +86,15 @@ firebase.database().ref('/메시지').once('value', function(snapshot){
     $("#DB_MESSAGE").text(message);
 })
 ```
+
+6. 메시지 수정 폼 확인
+```html
+<input id="INPUT_MESSAGE" type="text" class="validate">
+<button id="BTN_UPDATE" type="button" class="btn_indigo">변경하기</button>
+```
+
+```js
+$("#BTN_UPDATE").click(function(){
+    
+});
+```
