@@ -68,3 +68,21 @@ function writeUserData(userId, name, email, imageUrl){
     });
 }
 ```
+5. 데이터베이스에 데이터 읽기
+```js
+//reference
+ref.once('value').then(function(dataSnapshot){
+    //Read data
+})
+```
+* 데이터 표시 요소
+```html
+<span id="DB_MESSAGE" class="blue-text">(Loading..)</span>
+```
+
+```js
+firebase.database().ref('/메시지').once('value', function(snapshot){
+    var message = snapshot.val();
+    $("#DB_MESSAGE").text(message);
+})
+```
