@@ -92,9 +92,26 @@ firebase.database().ref('/메시지').once('value', function(snapshot){
 <input id="INPUT_MESSAGE" type="text" class="validate">
 <button id="BTN_UPDATE" type="button" class="btn_indigo">변경하기</button>
 ```
-
+* 값 설정
 ```js
 $("#BTN_UPDATE").click(function(){
-    
+    var new_message = $("#INPUT_MESSAGE").val();
+    firebase.database().ref('/메시지').set(new_message);
 });
 ```
+* 값 업데이트
+```js
+$("#BTN_UPDATE").click(function(){
+    var new_message = $("#INPUT_MESSAGE").val();
+    var updates = {};
+    updates['/메시지'] = new_message;
+    firebase.database().ref().update(update);
+});
+```
+
+* 쓰기 메소드
+- set() : 대체
+- push() : 키 생성 (고유 키 생성) : user-posts/<user-id>/<unique-post-id>
+- update() : 대체 없는 업데이트
+transaction() : 병행진행시
+
