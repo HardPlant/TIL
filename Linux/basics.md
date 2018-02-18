@@ -14,7 +14,6 @@ GATEWAY=
 
 * 동적 ip(DHCP) 설정
 
-
 `/etc/sysconfig/network-scripts/-`에서
 ```
 NETWORKING=yes
@@ -50,3 +49,33 @@ ONBOOT=yes
   * 정보 : `rpm -q[a,f,l,i]`
 
 * yum : 의존성 관리 추가
+  * 저장소 : `/etc/yum.repos.d/`
+  * 설치 : `yum install`
+  * 업데이트 : `check-update`
+  * 삭제 : `remove`
+  * 패키지 정보 : `info`
+
+* yum 로컬 설치
+  `/etc/yum.repos.d` 디렉토리의 파일을 모두 `backup` 디렉토리로 옮긴 후 다음과 같이 설정 파일 만듬
+  
+  fedora-local.repo
+
+  ```bash
+  [fedora-local]
+  name=Fedora Local
+  baseurl=file:///media/cdrom
+  gpgcheck=1
+  gpgkey=file:///media/cdrom/RPM-GPG-KEY-fedora
+  ```
+
+* 파일 압축
+  `tar -zvcf` (jxvf - bzip)
+  `tar -zvxf` (풀기)
+
+* 파일 위치 검색
+  `find /etc -name "*.conf" -user fedora -perm 644 `
+  `find /bin -size +10k -size -100k`
+
+  `find /bin -size 0k -exec ls -l {} \;`
+  `find /home -name "*.swp" -exec rm {} \;`
+  
