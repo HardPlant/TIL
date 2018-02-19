@@ -79,3 +79,7 @@ ONBOOT=yes
   `find /bin -size 0k -exec ls -l {} \;`
   `find /home -name "*.swp" -exec rm {} \;`
   
+
+  `locate` : `updatedb` 명령 실행 후 파일 빠르게 찾기 가능
+
+* cron, at
