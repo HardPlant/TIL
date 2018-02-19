@@ -82,6 +82,5 @@ ONBOOT=yes
 
   `locate` : `updatedb` 명령 실행 후 파일 빠르게 찾기 가능
 
-* cron, at
 
- 
+
