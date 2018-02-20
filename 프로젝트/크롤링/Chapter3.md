@@ -87,4 +87,52 @@ def getLinks(link):
 
 ### 전체 사이트에서 데이터 수집
 
-페이지에 
+페이지 제목, 첫 번째 문단, 편집 페이지를 가리키는 링크를 수집하는 스크레이퍼를 만들어 보자.
+
+* 제목은 항상 `h1` 태그 하나만 있고, `h1` 태그는 페이지에 하나만 존재한다.
+* 모든 바디 텍스트는 `div#bodyContent` 태그에 들어 있다.
+* 첫 번째 문단은 `div#mw-content-text` 하위의 첫번째 `p`만 선택하는 것이 낫다.
+* 편집 링크는 항목 페이지에만 존재한다. 편집 링크가 존재한다면 `li#ca-edit -> span -> a`로 찾을 수 있다.
+
+## 인터넷 크롤링
+
+각 페이지에 관한 정보를 기록해보자. 도메인마다 레이아웃이 다르므로, 새로운 도전이 될 것이다.
+
+* 수집하려 하는 데이터는 무엇인가?
+
+* 정해진 사이트 몇 개만 수집하면 되나? (그렇다면 더 나은 방법이 있다)
+
+* 크롤러가 특정 웹사이트에 도달하면 새 웹사이트 링크를 따라가야 하는가, 아니면 현재 웹사이트에 머물러야 하는가?
+
+* 특정 사이트를 스크랩에서 제외할 필요는 없나?
+
+* 크롤러의 방문을 알아차렸을 때 법적 보호 절차가 필요한가?
+
+다양한 웹 스크레이핑을 시작할 수 있는 코드를 만들 수 있다.
+
+```python
+def getInternalLinks(bsObj, includeUrl):
+    includeUrl = urlparse(includeUrl).scheme+"://"+urlparse(includeUrl).netloc
+    internalLinks = []
+
+    # /로 시작하는 링크를 모두 찾는다
+    for link in bsObj.findAll('a', href=re.compile('^(/|.^'+includeUrl+')')
+        if link.attrs['href'] is not None:
+            if link.attrs['href'] not in internalLinks:
+                if link.attrs['href'].startswith('/'):
+                    internalLinks.append(includeUrl+link.attrs['href'])
+                else:
+                    internalLinks.append(link.attrs['href'])
+    
+    return internalLinks
+
+def getExternalLinks(bsObj, excludeUrl):
+    pass
+
+def getRandomExternalLinks(startingPage):
+    pass
+
+def followExternalOnly(startingPage):
+    pass
+```
+
