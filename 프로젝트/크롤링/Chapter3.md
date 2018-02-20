@@ -149,6 +149,13 @@ def getRandomExternalLinks(startingPage):
         return externalLinks[random,randint(0, len(internalLinks)-1]
 
 def followExternalOnly(startingPage):
-    pass
+    externalLink = getRandomExternalLinks(startingSite)
+    print("Random external link is :" + externalLink)
+    followExternalOnly(externalLink)
 ```
 
+이 코드는 외부 링크를 찾아 외부 링크로 접속하는 코드이다.
+
+```python
+
+```
