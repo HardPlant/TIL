@@ -127,7 +127,14 @@ def getInternalLinks(bsObj, includeUrl):
     return internalLinks
 
 def getExternalLinks(bsObj, excludeUrl):
-    pass
+    externalLinks = []
+    # http, www로 시작하는 링크를 찾으며, 현재 URL은 포함하지 않는다.
+    for link in bsObj.findAll('a', href=re.compile('^(http|www)(?!'+excludeUrl+').)*$'):
+        if link.attrs['href'] is not None:
+            if link.attrs['href'] not in externalLinks:
+                    externalLinks.append(link.attrs['href'])
+    
+    return externalLinks
 
 def getRandomExternalLinks(startingPage):
     pass
