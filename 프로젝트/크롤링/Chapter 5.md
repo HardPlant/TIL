@@ -139,3 +139,88 @@ def getLinks(link):
     store(title,content)
     return bsObj.find("div",{'id':'bodyContent'}).findAll("a", href=re.compile('^(/wiki/)((?!:).)*$'))
 ```
+
+### 튜닝 팁
+
+다음 명령어로 인덱스를 만들어 둘 수 있다.
+
+`{id:200, word:"cat",definition:"A small furry animal that says meow"}`
+
+항목에서 definition 열의 검색을 빠르게 하기 위해 테이블에 키를 추가하는 대신,
+
+```sql
+CREATE INDEX definition ON dictionary(id, definition(16));
+```
+
+명령어로 인덱스를 만들게 할 수 있다.
+
+또한 `created`, `updated`, `deleted` 같은 타임스태프를 만들어두는 것도 좋다.
+
+### 여섯 다리와 MySQL
+
+페이지 A와 B 사이를 연결하는 링크가 있다면 그 링크는 유일하게 식별할 수 있다.
+`INSERT INTO links (fromPageId, toPageId) VALUES (A, B);`
+
+테이블 두 개로 페이지, 링크, 생성 날짜, 고유 id를 저장하는 시스템을 만들자.
+
+```sql
+CREATE DATABBASE wikipedia;
+USE wikipedia;
+CREATE TABLE pages(
+id INT NOT NULL AUTO_INCREMENT,
+url VARCHAR(255) NOT NULL,
+created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(id));
+
+CREATE TABLE links(
+id INT NOT NULL AUTO_INCREMENT,
+fromPageId INT NULL,
+toPageId INT NULL,
+created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(id)
+);
+```
+페이지에 방문하지 않고 페이지와 페이지를 가리키는 링크를 저장할 수 있어야 한다.
+위키백과 URL은 이름만 보고 페이지 타이틀을 알 수 있기 때문에, 페이지 타이틀을 저장하지 않을 수 있다.
+
+다음은 간략한 코드이다.
+
+```py
+'''
+페이지가 스크랩되었는지 확인한다.
+'''
+def pageScraped(url):
+    pass
+'''
+페이지 리스트에서 url을 검색해 하나를 불러온다. 없으면 삽입한다.
+'''
+def insertPageIfNotExists(url):
+    pass
+
+'''
+확인된 링크를 테이블에 삽입한다.
+'''
+def insertLink(fromPageId, toPageId):
+    pass
+
+def getLinks(pageUrl, recursionLevel):
+    if recursionLevel > 4:
+        return
+
+    pageId = insertPageIfNotExists(pageUrl)
+
+    html = urlopen('https://en.wikipedia.org'+pageUrl) # link는 /wiki/~ 형태로 반환된다.
+    bsObj = BeautifulSoup(html, "html.parser")
+
+    for link in bsObj.findAll("a", href=re.compile('^(/wiki/)((?!:).)*$')):
+        insertLink(pageId, insertPageIfNotExists(link.attrs['href']))
+        if not pageScraped(link.attrs['href']):
+            newPage = link.attrs['href']
+            print(newPage)
+            getLinks(newPage, recursionLevel + 1)
+        else:
+            print("Skipping: "+str(link.attrs['href']+" found on "+pageUrl))
+```
+
+## 이메일
+
