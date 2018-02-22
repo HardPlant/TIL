@@ -53,3 +53,108 @@ def isCommon(ngram):
 
 구글의 페이지 평가 알고리즘도 웹사이트를 노드로 나타내고 I/O 링크를 노드 사이의 연결로 나타내는 마르코프 모델을 일부 채용하고 있다.
 
+```py
+def wordListSum(wordList):
+    pass
+
+def retrieveRandomWord(wordList):
+    pass
+
+def buildWordDict(text):
+    pass
+
+text = str(
+    urlopen("http://pythonscraping.com/files/inaugurationSpeech.txt").read(), 'utf-8')
+
+wordDict = buildWordDict(text)
+
+length = 100
+chain = ""
+currentWord = "I"
+for i in range(0, length):
+    chain += currentWord +" "
+    currentWord = retrieveRandomWord(wordDict[currentWord])
+
+print(chain)
+```
+
+마지막 단어는 믿을 수 있는 것이어야 한다. (여기서는 마침표, 215번 나왔으므로 안전하다)
+
+### 위키백과의 여섯 다리
+
+이 문제는 방향성 그래프 문제이다. (링크된 문서와 링크한 문서에는 연결관계가 없을 수 있다).
+방향성 그래프에서 가장 좋고 가장 널리 쓰이는 방법은 너비 우선 탐색이다.
+너비 우선 탐색은 시작 페이지에서 출발하는 링크를 모두 검색하고, 첫 번째 링크에 없으면 시작 페이지에서 다시 링크를 찾는다.
+
+```py
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import re
+import datetime
+import random
+import pymysql
+
+conn = pymysql.connect(host=ip, user=user,passwd=password, db='mysql', charset='utf8')
+
+cur = conn.cursor()
+cur.execute("USE wikipedia")
+
+class SolutionFound(RuntimeError):
+    def __init__(self, message):
+        self.message = message
+
+def getLinks(fromPageId):
+    cur.execute("SELECT toPageId FROM links WHERE fromPageId = %s", (fromPageId))
+    if cur.rowcount == 0:
+        return None
+    else:
+        return [x[0] for x in cur.fetchall()]
+
+def constructDict(currentPageId):
+    links = getLinks(currentPageId)
+    if links:
+        return dict(zip(links, [{}]*len(links)))
+
+def searchDepth(targetPageId, currentPageId, linkTree, depth):
+    if depth == 0:
+        return linkTree
+    if not linkTree:
+        linkTree = constructDict(currentPageId)
+        if not linkTree: # 링크가 발견되지 않았음
+            return {}
+    if targetPageId in linkTree.keys():
+        print("TARGET "+str(targetPageId)+" FOUND!")
+        raise SolutionFound("PAGE: "+str(currentPageId))
+    
+    for branchKey, branchValue in linkTree.items():
+        try:
+            linkTree[branchKey] = searchDepth(targetPageId, branchKey, branchValue, depth-1)
+        
+        except SolutionFound as e:
+            print(e.message)
+            raise SolutionFound("PAGE: "+ str(currentPageId))
+    return linkTree
+
+try:
+    searchDepth(134951, 1, {}, 4)
+    print("No solution found")
+except SolutionFound as e:
+    print(e.message)
+```
+
+getLinks(), constructDict()는 주어진 페이지에 따라 데이터베이스에서 링크를 가져오고, 가져온 링크를 딕셔너리 형식으로 바꾸는 보조 함수이다.
+searchDepth()는 재귀적으로 한 번에 한 단계씩 링크 트리를 구축하는 동시에 검색한다.
+
+## 자연어 툴킷
+
+단어들의 의미를 가능한 이해해보자.
+
+`import nltk`
+`nltk.download()`
+이후 뜨는 창에서 [Download]를 선택한다.
+
+### NLTK 통계적 분석
+
+텍스트에서 단어 숫자, 단어 빈도, 어휘 다양도 등 통계적 정보를 생성할 때 아주 유용하다.
+
+NLTK 분석은 항상 Text 객체로 시작한다.
