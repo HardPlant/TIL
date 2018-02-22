@@ -81,5 +81,45 @@ def ngrams(input, n):
 
 ### 데이터 정규화
 
-중복된 2-그램을 없애고, 2-그램의 빈도를 기록해보자. 빈도를 기록하면 데이터 정리 알고리즘, 정규화 알고리즘을 바꿨을 때 어떤 효과가 있는 지 알기 쉽다.
-파이썬 딕셔너리는 정렬되지 않으므로, `collections` 라이브러리에 있는 `OrderedDict`를 사용하자.
+중복된 2-그램을 없애고, 2-그램의 빈도를 기록해보자. 빈도를 기록하면 데이터 정리 알고리즘, 정규화 알고리즘을 바꿨을 때 어떤 효과가 있는 지 알기 쉽다. 
+파이썬 딕셔너리는 정렬되지 않으므로, `collections` 라이브러리에 있는 `Counter`로 빈도 수를 센 뒤 `OrderedDict`를 사용하자.
+
+```py
+def ngrams(input, n):
+    input = clean_input(input)
+    print(input)
+    output = []
+    for i in range(len(input)-n+1):
+        output.append(" ".join((input[i:i+n])))
+
+    return Counter(output)
+
+ngrams = ngrams(content, 2)
+ngrams = OrderedDict(sorted(ngrams.items(), key=lambda t:t[1], reverse=True))
+```
+
+숫자를 셀 수 있게 되었다. 하지만 대소문자 때문에 중복이 있다.
+
+다음 행을 clean_input() 함수에 넣는다.
+
+```py
+input = input.upper()
+```
+
+중복이 좀 줄어들었다. 하지만 생각해보아야 할 점이 몇개 있다.
+
+* 1st, first를 어떻게 필터할 것인가?
+
+* 하이픈 사용은 어떻게 할 것인가?
+
+## 사후 정리
+
+오픈리파인 같은 프로그램으로 데이터를 쉽게 보고 사용할 수 있게 만들 수 있다.
+
+### 오픈리파인
+
+데이터를 빠르고 쉽게 정리할 수 있다.
+
+`http://openrefine.org/download.html`
+
+[위키백과의 텍스트 에디터 비교 테이블](https://en.wikipedia.org/wiki/Comparison_of_text_editors)에서 스크랩한 데이터를 사용하자.
