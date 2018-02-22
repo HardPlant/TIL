@@ -139,3 +139,28 @@ print(xml_content.decode('utf-8'))
 ```
 
 `BeautifulSoup`를 이용해 문서의 텍스트가 포함된 `<w:t>` 태그 안을 읽으면 된다.
+
+```py
+textStrings = wordObj.findAll("w:t")
+print(textStrings)
+for textElem in textStrings:
+    print(textElem)
+
+'''
+워드 타이틀을 읽는다.
+'''
+def findTitle(title):
+    # ...
+    textStrings = wordObj.findAll("w:t")
+    for textElem in textStrings:
+        closeTag = ""
+        try:
+            style = textElem.parent.previousSibling.find("w:pstyle")
+            if style is not None and style["w:val"] == "Title":
+                print("<h1>")
+                closeTag = "</h1>"
+        except AttributeError: # no tags
+            pass
+        print(textElem.text)
+        print(closeTag)
+```
