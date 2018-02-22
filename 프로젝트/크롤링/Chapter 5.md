@@ -224,3 +224,38 @@ def getLinks(pageUrl, recursionLevel):
 
 ## 이메일
 
+SMTP 서버를 구축해 두었다면, 다음과 같이 이메일을 보낼 수 있다.
+`http://bit.ly/2fbytIs` 스택플로우 답변을 참고하면 구글을 통해 이메일을 보낼 수 있다.
+
+```py
+import smtplib
+from email.mime.text import MIMEText
+
+msg = MIMEText("The body of the email is here")
+msg['Subject'] = "An Email Alert"
+msg['From'] = "from@gmail.com"
+msg['To'] = "to@gmail.com"
+
+s = smtplib.SMTP('localhost')
+s.send_message(msg)
+s.quit()
+```
+
+이 이메일 기능을 함수에 넣어서 유용하게 확장해보자.
+
+```py
+def send_mail(subject, body):
+    pass
+
+bsObj = BeautifulSoup(urlopen("https://isitchristmas.com/"))
+while(bsObj.find("a", {"id":"answer"}).attrs['title'] == "NO"):
+    print("It is not Christmas yet.")
+    time.sleep(3000)
+
+bsObj = BeautifulSoup(urlopen("https://isitchristmas.com/"))
+send_mail("It's Christmas!"
+,"According to http://itischristmas.com, it is Christmas!")
+```
+
+이 스크립트는 1시간에 한번씩 isitchristmas.com 사이트를 확인해 NO가 없으면 크리스마스 메일을 보낸다.
+약간 수정하면 테스트가 실패했을 때, 재고가 없을 때나 재고가 들어왔을 때 메일을 보내는 일도 가능할 것이다.
