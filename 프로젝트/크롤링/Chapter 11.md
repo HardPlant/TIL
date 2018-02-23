@@ -64,3 +64,17 @@ cleanFile("source/11-2/text_2.tif", "text_2_clean.png")
 
 이미지의 회색 임계점을 선택해서 테서렉트의 결과를 향상시켰다.
 
+### 웹사이트 이미지에서 텍스트 스크레이핑하기
+
+아마존에 있는 "이상한 나라의 앨리스" 큰 활자판으로 이동한 다음, 미리보기를 열고, 이미지 URL을 수잡혹, 이미지를 내려받아 읽은 다음 텍스트를 출력해보자.
+
+크롬 드라이버를 headless 모드로 실행하는 방법은 다음과 같다. 하지만 디버그 중에는 이 모드를 사용하지 않는 것을 추천한다.
+
+```py
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+chrome_options = Options()  
+chrome_options.add_argument("--headless")  
+driver = webdriver.Chrome(chrome_options=chrome_options)
+```
