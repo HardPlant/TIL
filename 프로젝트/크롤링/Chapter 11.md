@@ -78,3 +78,23 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")  
 driver = webdriver.Chrome(chrome_options=chrome_options)
 ```
+
+### CAPTCHA 읽기
+
+구글의 reCAPTCHA, drupal의 [CAPTCHA](https://www.drupa.org/project/captcha) 등 다양한 모듈이 있다.
+
+이 CAPTCHA의 함정은
+
+* 글자와 숫자가 섞여 있어 경우의 수가 늘어난다
+
+* 무작위로 기울어진 글자가 혼란을 준다
+
+* 이상하게 생긴 필기체 폰트가 인식을 어렵게 한다
+
+### 테서랙트 훈련
+
+각 글자의 예를 여러 번 입력해야 한다. 페이지를 여러 번 새로고침하면서 이미지를 저장한다. 그 이후 이미지를 tiff 파일로 변환한다. 문제의 답을 파일 이름으로 해 놓는 게 편하다.
+
+온라인 도구 [테서렉트 OCR 초퍼](http://pp19dd.com/tesseract-ocr-chopper)에서 사각형 박스를 추가하거나 크기를 조절하고 박스의 글자를 제대로 인식했는지 확인하고 틀렸으면 고친 다음, 브라우저의 박스 파일 텍스트를 컴퓨터 텍스트 에디터에 복사해서 붙여 넣으면 된다.
+
+또는 먼저 테서렉트로 박스 파일을 만들 수 있다. https://git.io/vXB3h 를 참고해서 200개의 파일에 대해 `tesseract (tif파일명).tif (box파일명) batch.nochop makebox`를 실행하면 된다.
