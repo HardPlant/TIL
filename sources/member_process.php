@@ -8,11 +8,15 @@ $db_con=mysql_select_db("test",$dbms_con);
 
 mysql_query("set name utf8");
 
+$upwd = md5($upwd);
+
 $sql = "insert into member(id, pwd) values('$uid', '$upwd')";
 $result = mysql_query($sql,$dbms_con);
 
 if($result){
     echo "saved";
+    $sql = "select * from member";
+    $result = mysql_query($sql,$dbms_con);
 } else {
     echo "failed";
     ini_set('display_errors', 1);
