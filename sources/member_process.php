@@ -16,12 +16,6 @@ $result = mysql_query($sql,$dbms_con);
 
 if($result){
     echo "saved";
-    $sql = "select * from member";
-    $result2 = mysql_query($sql,$dbms_con);
-    echo '\n';
-    while($row = mysql_fetch_array($result)) {
-        echo $row['fieldname'];
-    }
 } else {
     echo "failed";
     ini_set('display_errors', 1);
