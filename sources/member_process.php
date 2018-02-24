@@ -16,7 +16,9 @@ $result = mysql_query($sql,$dbms_con);
 if($result){
     echo "saved";
     $sql = "select * from member";
-    $result = mysql_query($sql,$dbms_con);
+    $result2 = mysql_query($sql,$dbms_con);
+    echo '\n'
+    echo $result2
 } else {
     echo "failed";
     ini_set('display_errors', 1);
