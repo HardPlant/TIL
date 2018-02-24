@@ -8,7 +8,7 @@ $db_con=mysql_select_db("test",$dbms_con);
 
 mysql_query("set name utf8");
 
-$sql = "inert into member(id, pwd) values('$uid', '$upwd')";
+$sql = "insert into member(id, pwd) values('$uid', '$upwd')";
 $result = mysql_query($sql,$dbms_con);
 
 if($result){
