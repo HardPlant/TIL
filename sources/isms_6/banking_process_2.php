@@ -21,7 +21,17 @@ $plaintext = "This string was AES-256 / CBC / ZeroBytePadding encrypted.";
 # create a random IV to use with CBC encoding
 $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
 $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-    
+
+$ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128,
+$key,
+$plaintext, MCRYPT_MODE_CBC, $iv);
+
+# prepend the IV for it to be available for decryption
+$ciphertext = $iv . $ciphertext;
+
+# encode the resulting cipher text so it can be represented by a string
+$ciphertext_base64 = base64_encode($ciphertext);
+
 $dbms_con = mysql_connect("localhost", "root", "toor");
 $db_con=mysql_select_db("test",$dbms_con);
 
