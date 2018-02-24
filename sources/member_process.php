@@ -18,8 +18,8 @@ if($result){
     echo "saved";
     $sql = "select * from member";
     $result2 = mysql_query($sql,$dbms_con);
-    echo '\n'
-    echo $result2
+    echo '\n';
+    echo $result2;
 } else {
     echo "failed";
     ini_set('display_errors', 1);
