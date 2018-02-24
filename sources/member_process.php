@@ -9,7 +9,8 @@ $db_con=mysql_select_db("test",$dbms_con);
 mysql_query("set name utf8");
 
 //$upwd = md5($upwd);
-$upwd = hash('sha256',$upwd,true);
+//$upwd = hash('sha256',$upwd,true);
+$upwd=hash_hmac("sha256",$upwd,"secretKey");
 
 $sql = "insert into member(id, pwd) values('$uid', '$upwd')";
 $result = mysql_query($sql,$dbms_con);
