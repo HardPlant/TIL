@@ -4,7 +4,7 @@ $uid = $_POST['uid'];
 $upwd = $_POST['upwd'];
 
 $dbms_con = mysql_connect("localhost", "root", "toor");
-$db_con=mysql_select_db($dbms_con);
+$db_con=mysql_select_db("test",$dbms_con);
 
 mysql_query("set name utf8");
 
