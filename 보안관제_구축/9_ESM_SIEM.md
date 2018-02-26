@@ -24,17 +24,38 @@ SIEM은 로그 수집과 분석, 검색에 특화된 형태로 구성되어 있�
 
 Lucene, Splunk 등과 같은 상용 솔루션을 이용해서도 구축이 가능함
 
+* 수평적 증가를 고려해 분산 처리하고, 클러스터에 하드웨어 등을 추가하는 방식으로 노드의 용량을 더 증가할 수 있음.
+
+* 고가용성 측면에서 노드의 상태를 감지해 장애가 발생한 노드가 있더라도 사용자의 데이터를 안전하게 저장, 접근할 수 있게 함
+
+* Multi-tenancy는 클러스터에서 여러 개의 인덱스를 저장, 관리할 수 있음
+
+* 다양한 형태의 쿼리를 통해 여러 인덱스의 데이터를 검색할 수 있어 Full text search가 가능
+
+## CentOS 6 기반에서 리포지터리를 추가해 Yum을 통해 설치
+
 `yum -y install java-1.8.0-openjdk`
 
-    * 수평적 증가를 고려해 분산 처리하고, 클러스터에 하드웨어 등을 추가하는 방식으로 노드의 용량을 더 증가할 수 있음.
+```bash
+rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch # Signing key 설치
+vi /etc/yum.repos.d/elasticsearch.repo # 리포지터리 추가
+###
+[elasticsearch-1.6]
+name=Elasticsearch repository for 1.6.x packages
+baseurl=https://packages.elastic.co/elasticsearch/1.6/centos
+gpgcheck=1
+gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+###
+yum install elasticsearch
+chkconfig elasticsearch on
+```
 
-    * 고가용성 측면에서 노드의 상태를 감지해 장애가 발생한 노드가 있더라도 사용자의 데이터를 안전하게 저장, 접근할 수 있게 함
+이후 iptables에 Elasticsearch 통신 포트 TCP 9200,9300을 추가한다.
 
-    * Multi-tenancy는 클러스터에서 여러 개의 인덱스를 저장, 관리할 수 있음
-
-    * 다양한 형태의 쿼리를 통해 여러 인덱스의 데이터를 검색할 수 있어 Full text search가 가능
-
-* CentOS 6 기반에서 리포지터리를 추가해 Yum을 통해 설치
-
-``
-
+```bash
+iptables -I INPUT -p tcp --dport 9200 -j ACCEPT
+iptables -I INPUT -p tcp --dport 9300 -j ACCEPT
+service iptables save
+iptables -L -n
+```
