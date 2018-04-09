@@ -44,7 +44,8 @@ d. 패킷 4 : 2, 71
 |   1456    |   2   |
 |   3255    |   1   |
 |   4470    |   4   |
-|   7176    |   2   |  1 - [ Sw ]  -4
+|   7176    |   2   |  1 
+- [ Sw ]  -4
 |   8766    |   3   |     2-/ \-3
 |   9144    |   2   |
 
@@ -70,6 +71,8 @@ n은 (N/2)^(1/2) 이상이 되어야 함
 
 N= 1000, n = sqrt(500) := 25, k = 49
 point = 2kn + k(N/n)^2 = 2 * 49 * 25 + 49 (1000/25)^2 = 2450 + 49 * 1600 = 80850
+n = 25, k = 60
+2kN + k(N/n)^2 = 2 * 90 * 1000 + (90*25)^2
 
 ## 8. 3단계 공간분할 스위치, N = 100. 10 크로스바를 1,3단계에 놓고 4 크로스바를 중단 단계에 놓음
 
@@ -89,7 +92,7 @@ d. single 크로스바(100x100)을 사용할 경우동시연결이 가능한 수
 
 100
 
-d. part c, part d에 있는 blocking factor와 ratio of the number of connection를 구해라
+e. part c, part d에 있는 blocking factor와 ratio of the number of connection를 구해라
 
 c : 
 blocking factor : 40 / 100 = 0.4
