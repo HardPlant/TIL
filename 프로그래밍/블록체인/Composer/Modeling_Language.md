@@ -59,3 +59,15 @@ o String postcode regex=/(GIR 0AA)|((([A-Z-[QVf]][0-9][0-9]?)|(([A-Z-[QVf]][A-Z-
 기본값 추가가능
 
 o String model default="F150"
+
+* Decorator
+
+자원, 속성에 데코레이터 가능
+@foo("arg1", 2)
+participant Buyer extends Person {
+}
+
+각 원소에 데코레이터 하나만 가능
+
+ModelManager API로 접근
+const val = myField.getDecorator('foo').getArguments()[2];
