@@ -125,7 +125,7 @@ tx.asset.owner로 가능
 Fabric API는 ACL을 우회할 수 있다.
 
 ```js
-async function simpleNativeHistoryTransaction (transaction) {    
+async function simpleNativeHistoryTransaction (transaction) {
     const id = transaction.assetId;
     const nativeSupport = transaction.nativeSupport;
 
@@ -152,4 +152,3 @@ async function simpleNativeHistoryTransaction (transaction) {
     }
 }
 ```
-

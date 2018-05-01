@@ -75,5 +75,36 @@ participant Person identified by personId {
   o String lastName
 }
 ```
+
 이다.
 
+## 트랜잭션 수행
+
+```js
+transaction RegisterPropertyForSale identified by transactionId{
+  o String transactionId
+  --> LandTitle title
+}
+```
+
+트랜잭션을 수행해 보자.
+트랜잭션은 id와 title을 가지고 있다. title은 판매를 위한 참조여야 한다.
+먼저 랜드타이틀에서 판매할 title을 가져온다.
+
+```js
+let registry = await this.bizNetworkConnection.getAssetRegistry('net.biz.digitalPropertyNetwork.LandTitle');
+await registry.get('LID:1148');
+```
+
+그 다음 직렬화기를 생성한 다음에 `RegisterPropertyForSale` 트랜잭션을 지정해 호출한다.
+
+```js
+let serializer = this.businessNetworkDefinition.getSerializer();
+
+let resource = serializer.fromJSON({
+  '$class': 'net.biz.digitalPropertyNetwork.RegisterPropertyForSale',
+  'title': 'LID:1148'
+});
+
+await this.bizNetworkConnection.submitTransaction(resource);
+```
