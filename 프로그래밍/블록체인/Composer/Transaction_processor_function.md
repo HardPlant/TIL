@@ -121,3 +121,35 @@ async function sampleTransaction(tx) {
 tx.asset.owner로 가능
 
 ## API 호출
+
+Fabric API는 ACL을 우회할 수 있다.
+
+```js
+async function simpleNativeHistoryTransaction (transaction) {    
+    const id = transaction.assetId;
+    const nativeSupport = transaction.nativeSupport;
+
+    const nativeKey = getNativeAPI().createCompositeKey('Asset:systest.transactions.SimpleStringAsset', [id]);
+    const iterator = await getNativeAPI().getHistoryForKey(nativeKey);
+    let results = [];
+    let res = {done : false};
+    while (!res.done) {
+        res = await iterator.next();
+
+        if (res && res.value && res.value.value) {
+            let val = res.value.value.toString('utf8');
+            if (val.length > 0) {
+                results.push(JSON.parse(val));
+            }
+        }
+        if (res && res.done) {
+            try {
+                iterator.close();
+            }
+            catch (err) {
+            }
+        }
+    }
+}
+```
+
