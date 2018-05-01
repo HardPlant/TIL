@@ -152,3 +152,5 @@ async function simpleNativeHistoryTransaction (transaction) {
     }
 }
 ```
+
+트랜잭션을 부르는 참여자는 `getCurrentParticipant()`를 이용해 알 수 있다.
