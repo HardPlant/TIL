@@ -23,3 +23,49 @@ Orderer 여러개 + kafka, zookeeper
 
 ## App 레벨
 
+CA 포함조직 - 별개 운영
+main(헤더)
+store1-> npm install
+이후 enrollAdmin.js로 admin 등록
+
+* Manager 등록
+
+POST vm170.blockchain.arcy.me:3001/usermanage/user
+
+{
+    "enrollmentID": "store1_mj1",
+    "enrollmentSecret": "rIFExIuPqBkS"
+}
+
+* 확인
+
+POST vm170.blockchain.arcy.me:3001/usermanage/user
+/transaction/product/store2_mj1
+
+* Store2에서도
+
+node enrollAdmin.js
+
+POST vm170.blockchain.arcy.me:3002/usermanage/user
+{
+    "userId":""
+}
+{
+    "enrollmentID": "store2_mj1",
+    "enrollmentSecret": "crRldbXTwObs"
+}
+
+* 확인
+
+/transaction/product/store2_mj2
+
+install, initiated 된 peer가 첫 call 시점에서 build되므로 처음에는 느림
+
+* 이벤트 핸들러
+
+submit transaction -> 대기하도록 구현됨
+system integration
+
+dockerfile 확인, 이후 docker build -t hardplant/eventsclient
+
+==> DB Trigger 역할 (변경되었음을 알려줌)
