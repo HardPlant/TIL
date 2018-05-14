@@ -69,3 +69,9 @@ system integration
 dockerfile 확인, 이후 docker build -t hardplant/eventsclient
 
 ==> DB Trigger 역할 (변경되었음을 알려줌)
+
+* docker-compose-events.yaml 변경
+
+image이름, channel,
+
+
