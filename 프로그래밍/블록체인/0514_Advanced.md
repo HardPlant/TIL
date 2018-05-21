@@ -74,4 +74,12 @@ dockerfile 확인, 이후 docker build -t hardplant/eventsclient
 
 image이름, channel,
 
+A 은행 송금 => B 은행 인지
 
+* rest -> app.js
+
+* event handler -> process임
+
+이벤트 -> 프로세스임
+
+==> 블록체인 플랫폼 전용
