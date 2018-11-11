@@ -154,9 +154,15 @@ force .. github remote 수정할 때 base commit이 수정될 수 있음, (rever
 
 * 그러면, 원래 문제로 돌아가서..
 
-git interactive (rewind를 어디까지 할지 결정 가능)
+git shortlog ... base부터 diff까지 커밋 보여줌
 
+git rebase -i (rewind를 어디까지 할지 결정 가능) ex) git rebase -i HEAD~10
 
+git rebase --continue
 
-## 
+커밋 한개를 ++
+
+## upstream 추가
+
+fetch를 할 upstream을 추가해야 함 (역PR이 아님)
 
