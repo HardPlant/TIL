@@ -26,6 +26,7 @@ textElements = d3.select("#myGraph")
     .data(dataSet)
 
 textElements.enter()
+    .append("text")
     .attr("class", "barNum")
     .attr("x", function(d, i){
         console.log(i);
