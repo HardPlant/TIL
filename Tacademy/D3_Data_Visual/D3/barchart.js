@@ -6,8 +6,9 @@ barElements = d3.select("#myGraph")
     .selectAll("rect")
     .data(dataSet);
 
-barElements.enter();
-
+barElements.enter()
+    .append("rect")
+    
 textElements = d3.select("#myGraph")
     .select("#barNum")
-    .data(dataSet)
+    .data(dataSet);
