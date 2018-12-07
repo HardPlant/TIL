@@ -8,7 +8,9 @@ barElements = d3.select("#myGraph")
 
 barElements.enter()
     .append("rect")
-    .attr("height", "20")
+    .attr("height", function(d){
+        return d;
+    })
     .attr("weight", "20")
     .attr("x", "1")
     .attr("y", "1")
