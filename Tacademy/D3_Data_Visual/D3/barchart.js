@@ -8,6 +8,7 @@ barElements = d3.select("#myGraph")
 
 barElements.enter()
     .append("rect")
+    .attr("class", "bar")
     .attr("height", function(d){
         return d;
     })
@@ -16,7 +17,16 @@ barElements.enter()
         console.log(i);
         return i * 30;
     })
-    .attr("y", "1")
+    .attr("y", function(d) {
+        return svgHeight - d;
+    });
+
 textElements = d3.select("#myGraph")
     .select("#barNum")
-    .data(dataSet);
+    .data(dataSet)    .attr("x", function(d, i){
+        console.log(i);
+        return i * 30;
+    })
+    .attr("y", function(d) {
+        return svgHeight - d;
+    });
