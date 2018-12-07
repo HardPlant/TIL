@@ -23,10 +23,15 @@ barElements.enter()
 
 textElements = d3.select("#myGraph")
     .select("#barNum")
-    .data(dataSet)    .attr("x", function(d, i){
+    .data(dataSet)
+
+textElements.enter()
+    .attr("class", "barNum")
+    .attr("x", function(d, i){
         console.log(i);
         return i * 30;
     })
-    .attr("y", function(d) {
-        return svgHeight - d;
+    .attr("y", svgHeight - 5)
+    .text(function(d){
+        return d;
     });
