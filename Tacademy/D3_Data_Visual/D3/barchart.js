@@ -12,7 +12,10 @@ barElements.enter()
         return d;
     })
     .attr("weight", "20")
-    .attr("x", "1")
+    .attr("x", function(d, i){
+        console.log(i);
+        return i * 30;
+    })
     .attr("y", "1")
 textElements = d3.select("#myGraph")
     .select("#barNum")
