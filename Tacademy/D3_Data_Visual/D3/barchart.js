@@ -8,7 +8,10 @@ barElements = d3.select("#myGraph")
 
 barElements.enter()
     .append("rect")
-    
+    .attr("height", "20")
+    .attr("weight", "20")
+    .attr("x", "1")
+    .attr("y", "1")
 textElements = d3.select("#myGraph")
     .select("#barNum")
     .data(dataSet);
