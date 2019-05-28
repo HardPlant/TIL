@@ -85,7 +85,7 @@ reStructuredText
 ```bash
 # 한국어 작성 (.rst)
 make html
-sphinx-build -b gettext () [buildpath]
+sphinx-build -b gettext source build
 sphinx-intl update -p -l en_US
 # 영어 번역 (.po)
 sphinx-build -b html -Dlanguage=en_US [buildpath]
@@ -117,3 +117,97 @@ intlpo:
 ### 대체 툴
 
 `notion`
+
+## Technical Writer
+
+* sharing information in a professional 
+
+* convey information to another person/party, in the most clear and effective manner possible
+
+* API Writer
+
+* Information Architect
+
+* {Planner, Designer, QAE, Evangelist}
+
+* Naver, Line, LG, NC ..
+
+### 
+
+* UI Message
+
+* Manual / Help
+
+* Whitepaper
+
+* Localization
+
+* Developer Guide
+
+* Development Design Guide
+
+상위설계, 하위설계, 상세셜계
+
+* Troubleshooting Guide
+
+* Tutorial Guide
+
+* Training
+
+* Review UI Message
+
+Style Guide / Glossaries
+
+* Operating Guide
+
+* Integration Guide
+
+* Writing Process
+
+* Facility
+
+Confluence Space -> 영어 번역
+
+위키 교육
+
+###
+
+* STC ()
+
+* Write the docs
+
+* API the docs
+
+### JD
+
+* 정보의 구조화/에디팅
+
+* 3년을 정확히 카운트하지는 않는다
+
+### Background
+
+* Dev .. 문서화, 문서/API Refs 자동화, 엔지니어링/사이트 작업
+
+* Linguist .. 문서화, 다국어화
+
+### What 
+
+* Documentation
+
+* Support for presentation/conference
+
+* Training for Wiki
+
+* Technical Writing Day
+
+* 정보의 구조화 / 분류화 / 그루핑
+
+* 패턴 / 맞춤법
+
+## POWER Writing
+
+basic skills of writing
+
+* Prepare/Organize/Write/Edit/Review
+
+* 
