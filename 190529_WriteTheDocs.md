@@ -210,4 +210,92 @@ basic skills of writing
 
 * Prepare/Organize/Write/Edit/Review
 
-* 
+* Teaching geeks to fish
+
+#### Preparing
+
+Main Topic .. 경향을 정하는 요소임
+Readers .. 중요함, 어떤 정보를 담는가?
+Outline .. 개요, 글의 줄거리
+
+* reader's context
+
+#### Organizing
+
+글감, 목차
+
+* 목적지까지 빠르게 도달하게 해야 함
+
+* 저자 논리 강요 / 
+
+* 생각의 정리
+
+Topic -> 분류, Mindmap
+
+가지 중 중복된 부분이 발생함
+논리적으로 모순되는지?
+
+Content -> 목차, 피라미드 원칙 ()
+
+* 세로의 법칙 / 연역, 귀납
+
+So What? (Top-down)
+Why so? (Buttom-up)
+
+* 가로의 법칙 / MECE
+
+#### Writing
+
+초안과 교정을 구분해야 함 (진도가 안 나감)
+Write a draft / get it revised
+
+앞에서 잡았던 구조 하에서,
+생각나는 대로 
+
+* always shit (by hemingway)
+
+#### Editing
+
+* Accuracy
+
+정확한 문법, 정확한 속도
+
+Information, Grammer
+
+(책: 내 문장이 그렇게 이상한가요?)
+틀린 글자를 가르쳐주는 마법연필 (맞춤법 검사기, 부산대 ver/네이버 ver)
+영어 .. Grammarly (보안적인 면이 있음), LanguageTool.org
+Official Notation .. 
+
+* Consistency
+
+같은 개념 = 같은 용어
+Terms/Tone
+
+* Simplicity
+
+Keep it short
+
+* Universality
+
+누구나 알기 쉽게
+curse of knowledge
+
+Bug Tracking System .. BTS .. Bangkok 
+
+
+#### Reviewing
+
+자가검토 / 
+
+Take a break
+Print it out
+Read it out aloud
+
+* 캠릿브지 대학의 연결구과
+
+잘 읽히니 문제가 없지 않는가?
+==> 신뢰성 문제, 검색 문제 발생
+
+* You can't get good with practice
+
